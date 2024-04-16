@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-04-16 17:29:10
+/* Smarty version 3.1.48, created on 2024-04-16 18:20:50
   from 'C:\laragon\www\prueba-tecnica-prestashop\themes\classic\templates\_partials\microdata\head-jsonld.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_661e99468c5590_83437246',
+  'unifunc' => 'content_661ea5625afd59_35661218',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_661e99468c5590_83437246 (Smarty_Internal_Template $_smarty_tpl) {
+function content_661ea5625afd59_35661218 (Smarty_Internal_Template $_smarty_tpl) {
 echo '<script'; ?>
  type="application/ld+json">
   {
