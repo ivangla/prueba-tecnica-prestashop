@@ -1,0 +1,25 @@
+<?php return array (
+  'parameters' => 
+  array (
+    'database_host' => '127.0.0.1',
+    'database_port' => '',
+    'database_name' => 'db-prueba-tecnica-prestashop',
+    'database_user' => 'root',
+    'database_password' => '',
+    'database_prefix' => 'ps_',
+    'database_engine' => 'InnoDB',
+    'mailer_transport' => 'smtp',
+    'mailer_host' => '127.0.0.1',
+    'mailer_user' => NULL,
+    'mailer_password' => NULL,
+    'secret' => 'DMMcMJZKddH6646HdPGUOactzjTALXINdQmRBHLpMh9MnVZ6o8bYH7f5UDceZ54K',
+    'ps_caching' => 'CacheMemcache',
+    'ps_cache_enable' => false,
+    'ps_creation_date' => '2024-04-16',
+    'locale' => 'es-ES',
+    'use_debug_toolbar' => true,
+    'cookie_key' => 'er0N0o9MNPNzczBkHb0R2PyCycqv59f0kywkUms34MtSEfcXDanZ39EbZINGx7vp',
+    'cookie_iv' => '1DWfi43PYv6987J9DHJzzJv9pxO4oAyy',
+    'new_cookie_key' => 'def00000edd14e9fa2244d2a7db566528768db61800414a5d548e4f8795718cbfa7172fd92920054ddc9f6401df5cdc66c75cf35d065ef1d45e3907fd882550737f49b16',
+  ),
+);
