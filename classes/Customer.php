@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -23,6 +24,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
+
 use PrestaShop\PrestaShop\Adapter\CoreException;
 use PrestaShop\PrestaShop\Adapter\ServiceLocator;
 
@@ -177,8 +179,8 @@ class CustomerCore extends ObjectModel
         'primary' => 'id_customer',
         'fields' => [
             'secure_key' => ['type' => self::TYPE_STRING, 'validate' => 'isMd5', 'copy_post' => false],
-            'lastname' => ['type' => self::TYPE_STRING, 'validate' => 'isCustomerName', 'required' => true, 'size' => 255],
-            'firstname' => ['type' => self::TYPE_STRING, 'validate' => 'isCustomerName', 'required' => true, 'size' => 255],
+            'lastname' => ['type' => self::TYPE_STRING, 'validate' => 'isCustomerName', 'required' => true, 'size' => 512],
+            'firstname' => ['type' => self::TYPE_STRING, 'validate' => 'isCustomerName', 'required' => true, 'size' => 512],
             'email' => ['type' => self::TYPE_STRING, 'validate' => 'isEmail', 'required' => true, 'size' => 255],
             'passwd' => ['type' => self::TYPE_STRING, 'validate' => 'isPasswd', 'required' => true, 'size' => 255],
             'last_passwd_gen' => ['type' => self::TYPE_STRING, 'copy_post' => false],
@@ -287,7 +289,7 @@ class CustomerCore extends ObjectModel
                 500,
                 $this->trans(
                     'The email is already used, please choose another one',
-                     [],
+                    [],
                     'Admin.Notifications.Error'
                 ),
                 140
@@ -351,7 +353,8 @@ class CustomerCore extends ObjectModel
      */
     public function updateWs($nullValues = false)
     {
-        if (Customer::customerExists($this->email)
+        if (
+            Customer::customerExists($this->email)
             && Customer::customerExists($this->email, true) !== (int) $this->id
         ) {
             WebserviceRequest::getInstance()->setError(
@@ -425,7 +428,7 @@ class CustomerCore extends ObjectModel
             SELECT `id_customer`, `email`, `firstname`, `lastname`
             FROM `' . _DB_PREFIX_ . 'customer`
             WHERE 1 ' . Shop::addSqlRestriction(Shop::SHARE_CUSTOMER) .
-            ($onlyActive ? ' AND `active` = 1' : '') . '
+                ($onlyActive ? ' AND `active` = 1' : '') . '
             ORDER BY `id_customer` ASC'
         );
     }
@@ -1279,8 +1282,7 @@ class CustomerCore extends ObjectModel
             && $this->id
             && Validate::isUnsignedId($this->id)
             && Customer::checkPassword($this->id, $this->passwd)
-            && Context::getContext()->cookie->isSessionAlive()
-        ;
+            && Context::getContext()->cookie->isSessionAlive();
     }
 
     /**

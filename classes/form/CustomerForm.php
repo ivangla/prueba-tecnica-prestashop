@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -23,6 +24,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
+
 use PrestaShop\PrestaShop\Core\Util\InternationalizedDomainNameConverter;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -129,7 +131,8 @@ class CustomerFormCore extends AbstractForm
 
         // check birthdayField against null case is mandatory.
         $birthdayField = $this->getField('birthday');
-        if (!empty($birthdayField) &&
+        if (
+            !empty($birthdayField) &&
             !empty($birthdayField->getValue()) &&
             Validate::isBirthDate($birthdayField->getValue(), $this->context->language->date_format_lite)
         ) {
@@ -142,7 +145,8 @@ class CustomerFormCore extends AbstractForm
 
         $passwordField = $this->getField('password');
         if ((!empty($passwordField->getValue()) || $this->passwordRequired)
-            && Validate::isPasswd($passwordField->getValue()) === false) {
+            && Validate::isPasswd($passwordField->getValue()) === false
+        ) {
             $passwordField->addError($this->translator->trans(
                 'Password must be between 5 and 72 characters long',
                 [],
@@ -158,8 +162,8 @@ class CustomerFormCore extends AbstractForm
     protected function validateFieldsLengths()
     {
         $this->validateFieldLength('email', 255, $this->getEmailMaxLengthViolationMessage());
-        $this->validateFieldLength('firstname', 255, $this->getFirstNameMaxLengthViolationMessage());
-        $this->validateFieldLength('lastname', 255, $this->getLastNameMaxLengthViolationMessage());
+        $this->validateFieldLength('firstname', 512, $this->getFirstNameMaxLengthViolationMessage());
+        $this->validateFieldLength('lastname', 512, $this->getLastNameMaxLengthViolationMessage());
     }
 
     /**
