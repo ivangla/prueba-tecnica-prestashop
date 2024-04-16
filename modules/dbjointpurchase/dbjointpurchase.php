@@ -440,14 +440,14 @@ class Dbjointpurchase extends Module
 
     public function addProductJoint($id_product_main, $id_product_related)
     {
-        $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'product_joint` (`id_product_main`, `id_product_related`)
+        $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'dbjointpurchase_product_joint` (`id_product_main`, `id_product_related`)
             VALUES (' . (int)$id_product_main . ', ' . (int)$id_product_related . ')';
         return Db::getInstance()->execute($sql);
     }
 
     public function deleteProductJoint($id_product_joint)
     {
-        $sql = 'DELETE FROM `' . _DB_PREFIX_ . 'product_joint`
+        $sql = 'DELETE FROM `' . _DB_PREFIX_ . 'dbjointpurchase_product_joint`
             WHERE `id_product_joint` = ' . (int)$id_product_joint;
         return Db::getInstance()->execute($sql);
     }
@@ -455,7 +455,7 @@ class Dbjointpurchase extends Module
     public function getProductJoint($id_product_main)
     {
         $sql = 'SELECT `id_product_related`
-            FROM `' . _DB_PREFIX_ . 'product_joint`
+            FROM `' . _DB_PREFIX_ . 'dbjointpurchase_product_joint`
             WHERE `id_product_main` = ' . (int)$id_product_main;
         return Db::getInstance()->ExecuteS($sql);
     }

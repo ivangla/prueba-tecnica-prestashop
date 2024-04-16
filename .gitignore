@@ -1,0 +1,8 @@
+# Ignorar archivos de caché
+cache/
+var/cache/*
+
+# Ignorar archivos de compilación
+themes/*/cache/
+themes/*/assets/
+themes/*/modules/*

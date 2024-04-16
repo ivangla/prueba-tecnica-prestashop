@@ -7461,7 +7461,19 @@ class appProdProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBundle\R
 
             }
 
-            elseif (0 === strpos($pathinfo, '/modules/link-widget')) {
+            // ps_eventbus_api_resolver
+            if (0 === strpos($pathinfo, '/modules/pseventbus/api') && preg_match('#^/modules/pseventbus/api(?:/(?P<query>[^/]++))?$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'ps_eventbus_api_resolver']), array (  'query' => '',  '_controller' => 'PrestaShop\\Module\\PsEventbus\\Controller\\Admin\\PsEventbusResolverController::resolve',));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_ps_eventbus_api_resolver;
+                }
+
+                return $ret;
+            }
+            not_ps_eventbus_api_resolver:
+
+            if (0 === strpos($pathinfo, '/modules/link-widget')) {
                 // admin_link_block_list
                 if ('/modules/link-widget/list' === $pathinfo) {
                     $ret = array (  '_controller' => 'PrestaShop\\Module\\LinkList\\Controller\\Admin\\Improve\\Design\\LinkBlockController::listAction',  '_legacy_controller' => 'AdminLinkWidget',  '_legacy_link' => 'AdminLinkWidget',  '_route' => 'admin_link_block_list',);
